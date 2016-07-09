@@ -1,33 +1,38 @@
 // alert ('Hello, world!');
 // ЗАДАНИЕ №1
-function power(base,exp) {
+function power(x,n) {
 
-		if ( exp <= 0 ) {
-								
-			var result = 1; // если показатель степени  = 0
+	var x = prompt("ВВЕДИТЕ ЛЮБОЕ ЧИСЛО", '');
+	var n = prompt("ВВЕДИТЕ ЖЕЛАЕМЫЙ ПОКАЗАТЕЛЬ СТЕПЕНИ", ''); 
+	var result;
+		
+		if ( +n === 0 ) {			
+			 result = 1; // если показатель степени  = 0
+			 console.log( result );
 		}
 	
-		if ( exp > 0) {
+		if ( n > 0) {
 											
-			var result = base;			// если показатель степени  положительный
-		for(var i = 1 ; i < exp ; i++){   
-			result *= base };
-
+			 result = x;			// если показатель степени  положительный
+		for(var i = 1 ; i < n ; i++){   
+			result *= x };
+			console.log( result );
 		}
 
-		if ( exp < 0) {
+		if ( n < 0) {
 											
-		 	var result = 1/base;			// если показатель степени  отрицательный
-		for(var i = exp ; i < -1 ; i++){
-				result *= (1/base) };
-
+		 	 result = 1/x;			// если показатель степени  отрицательный
+		for(var i = n ; i < -1 ; i++){
+				result *= (1/x) };
+				console.log( result );
 		}
+	
 	 return result;
-}
-	
-var base = prompt("ВВЕДИТЕ ЛЮБОЕ ЧИСЛО", '');
-var exp = prompt("ВВЕДИТЕ ЖЕЛАЕМЫЙ ПОКАЗАТЕЛЬ СТЕПЕНИ", '');
 
-console.log( power(base, exp) );
+	
+}
+
+	// power();
+
 // ЗАДАНИЕ №2
 
