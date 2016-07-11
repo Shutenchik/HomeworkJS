@@ -4,10 +4,14 @@ function arrName() {
  var arr = []; //создем массив
    
     for (var i=0; i < 5; i++) {
-        arr[i] = prompt('Введите любое имя', i); //Заполняем массив
-        if (arr[i] === null || arr[i] === '') {  // если  массив пустой или "Отмена"
+        arr[i] = prompt('Введите любое имя', +i); //Заполняем массив
+        if ( arr[i] === null || arr[i] === '' ) {  // если  массив пустой или "Отмена"
         	alert('Вы не указали имя');
-        		 arr[i] = prompt('Введите любое имя', i); 
+        		 arr[i] = prompt('Введите любое имя', +i); 
+        	// if ( arr[i] === null ) {
+        	// 	alert ('Отмена');
+        	// 	break;
+        	// }
         }
     }
 
@@ -28,6 +32,10 @@ function arrName() {
 	    if (  userName === null || userName === '' ) {  // если  массив пустой или "Отмена"
 		  alert('Вы не указали пользователя!');
 		  userName = prompt ('Введите имя пользователя'); 
+		  // if ( userName === null ) {
+    //     		alert ('Отмена');
+    //     		break;
+    //     	}
 	}
 }
 	
