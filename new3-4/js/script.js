@@ -1,43 +1,77 @@
-var generator = {
-   renderTitle: function  renderTitle(titleName){
-   	var header = document.createElement('h1');
-	header.innerHTML = titleName;
-	header.classList.add('alert', 'alert-info','text-center');
-	var body = document.querySelector('body');
-	document.body.appendChild(header);
-   },
-    generateQuestion: function  generateQuestion(question){
-   	var label = document.createElement('label');
-	label.innerHTML = question;
-	label.classList.add('container','col-lg-offset-1','lead','alert', 'alert-success');
-	var body = document.querySelector('body');
-	document.body.appendChild(label);
-   },
-   generateAnswer: function generateAnswer(answer) {
-   	var box1 = document.createElement('div');
-	box1.classList.add('container','col-lg-offset-1','alert', 'alert-warning');
-	document.body.appendChild(box1);
-   	var checkBox = document.createElement('input');
-	checkBox.setAttribute('type','checkbox');
-	box1.appendChild(checkBox);  
-	var labelBox = document.createElement('label');
-	labelBox.innerHTML = answer;
-	labelBox.style.display = 'inline-block';
-	box1.appendChild(labelBox);
-   },
-   generateButton: function generateButton(buttonName){
-   	var button = document.createElement('button');
-	button.innerHTML = buttonName;
-	button.classList.add('btn', 'btn-primary', 'btn-lg','col-lg-offset-3','col-lg-6');
-	document.body.appendChild(button);
+var initHtml = {
+	 callTitle: function(){
+ 		renderHtml.renderTitle('Тест по програмированию');
+ 	},
+ 	callQuestion: function(){
+ 	for(var i=1; i<=3; i++) {
+            renderHtml.generateQuestion('Вопрос №', i);
+            for(var j = 1; j<=3; j++) {
+                renderHtml.generateAnswer('Вариант ответа №', j );
+            }
+        }
+	},
+ 	callButton: function() {
+ 		renderHtml.generateButton('Проверить мои результаты');
+ 	},
+	callPage: function() {
+		this.callTitle();
+		this.callQuestion();
+		this.callButton();
+	}
+}
+
+var renderHtml = {
+
+	createElement: function(el, classElem,  text, attr, parent) {
+		var elem = document.createElement(el);
+	 
+		if(el == 'input')
+            this.setAttr(elem,'type','checkbox');
+
+		this.setClass(classElem, elem);
+		this.setText(elem, text);
+		this.setAppend(elem, parent);
+		return elem;
+	},
+
+	setClass: function(classElem, element) {
+		element.className = classElem;
+	},
+
+	setAttr: function(element, attr, value ) {
+		element.setAttribute(attr, value);
+	},
+
+	setText: function (element, text) {
+		element.innerHTML = text;
+	},
+
+	setAppend: function ( element, parent) {
+		 if(parent != undefined && parent != '')
+            parent.appendChild(element);
+        else
+            document.body.appendChild(element);
+	},
+
+	renderTitle: function () {
+		this.createElement('h1','alert alert-info text-center','Тест по програмированию');
+	},
+
+	generateQuestion: function(text, number) {
+		this.createElement('label', 'container col-lg-6 col-lg-offset-3 lead alert alert-success', +number+'. '+text+number);
+	},
+	generateAnswer: function(text,  number) {
+		var parentBox = this.createElement('div', 'container col-lg-6 col-lg-offset-3 alert alert-warning', '');
+		this.createElement('input', 'container col-lg-6 col-lg-offset-3 alert alert-warning', '', '',parentBox);
+		this.createElement('label', '', text+number, '', parentBox);
+
+	},
+
+    generateButton: function (){
+    	this.createElement('button', 'btn btn-primary btn-lg col-lg-offset-3 col-lg-6', 'Проверить мои результаты');
    }
 }
-generator. renderTitle('Тест по програмированию');
-for(var i=1; i<=3; i++) {
-  generator.generateQuestion(i+'. Вопрос №'+i);
-  
-  for(var j = 1; j<=3; j++) {
-    generator.generateAnswer('Вариант ответа №'+j);
-  }
-}
-generator.generateButton('Проверить мои результаты');
+
+initHtml.callPage();
+
+
