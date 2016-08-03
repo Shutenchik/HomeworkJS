@@ -53,7 +53,7 @@ function Stopwatch (elem) {
 
 	}
 
-	this.running = false;
+	this.isOn = false;
 
 	this.startPause = function() {
 		if ( !this.isOn) {
