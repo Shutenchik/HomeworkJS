@@ -7,9 +7,9 @@ function Stopwatch (elem) {
 		if (this.isOn) {
 			time += delta();
 		}
-		
+
 		var timeFormatted = timeFormat(time);
-		elem.textContent = timeFormatted;
+		elem.innerHTML = timeFormatted;
 	}
 
 	function delta() { // ф-ция вычисляет сколько времени прошло
@@ -49,7 +49,8 @@ function Stopwatch (elem) {
 	  	milSec = '0' + milSec;
 	  }
 
-	  return hours + ':' + min + ':' + sec + '.' + milSec;
+	  var timer = document.getElementById('timer').innerHTML =  hours + ':' + min + ':' + sec + '.' + milSec;
+	  return timer;
 
 	}
 
@@ -73,14 +74,12 @@ function Stopwatch (elem) {
 	 this.reset = function(){
 	 	time = 0;
 	 	document.getElementById('startPause').innerHTML = 'Start';
-
 	  	update();
 	 }
  }
 
 
-
-var timer = document.getElementById('timer');
+(function () {
 var startFunc = document.getElementById('startPause');
 var resetFunc = document.getElementById('reset');
 
@@ -99,3 +98,5 @@ resetFunc.addEventListener('click', function(){
 		watch.reset();
 	}	
 });
+}) ();
+

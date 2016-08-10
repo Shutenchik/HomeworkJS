@@ -9,12 +9,12 @@ body {
 	text-align: center;
 }
 
-.wrapper {
-	
-	 margin: 150px auto;
+.wrapper {	
+	 margin: 100px auto;
 	 color: rebeccapurple;	
 	 width: 600px;
 }
+
 .header {
 	font-size: 75px;
 	margin-bottom: 15px;
