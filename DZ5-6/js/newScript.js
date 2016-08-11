@@ -1,8 +1,33 @@
+(function () {
 function Stopwatch (elem) {
 	var time = 0;
 	var interval;
 	var offset;
 
+	this.isOn = false;
+
+	this.startPause = function() {
+		if ( !this.isOn) {
+		  document.getElementById('startPause').innerHTML = 'Pause';
+		  interval = setInterval( update.bind(this), 1);
+		  offset = Date.now(); // время запуска секундомера
+		  this.isOn = true;
+	
+		} else {
+			document.getElementById('startPause').innerHTML = 'Resume';
+			clearInterval(interval);
+			interval = 0;
+			this.isOn = false;
+		}
+	}
+
+	 this.reset = function(){
+	 	time = 0;
+	 	document.getElementById('startPause').innerHTML = 'Start';
+	  	update();
+	 }
+
+	 /*Приватные функции конструктора*/
 	function update() {	
 		if (this.isOn) {
 			time += delta();
@@ -53,33 +78,9 @@ function Stopwatch (elem) {
 	  return timer;
 
 	}
-
-	this.isOn = false;
-
-	this.startPause = function() {
-		if ( !this.isOn) {
-		  document.getElementById('startPause').innerHTML = 'Pause';
-		  interval = setInterval( update.bind(this), 1);
-		  offset = Date.now(); // время запуска секундомера
-		  this.isOn = true;
-	
-		} else {
-			document.getElementById('startPause').innerHTML = 'Resume';
-			clearInterval(interval);
-			interval = 0;
-			this.isOn = false;
-		}
-	}
-
-	 this.reset = function(){
-	 	time = 0;
-	 	document.getElementById('startPause').innerHTML = 'Start';
-	  	update();
-	 }
  }
 
 
-(function () {
 var startFunc = document.getElementById('startPause');
 var resetFunc = document.getElementById('reset');
 
