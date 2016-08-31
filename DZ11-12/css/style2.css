@@ -1,0 +1,33 @@
+body{
+	font-size: 18px;
+	background-color: rgb(232, 249, 247);
+	font-family: arial;
+}
+.header{
+	margin-top: 60px;
+	border-bottom: 1px solid #C0C0C0;
+}
+
+.list{
+	border-bottom:1px solid #C0C0C0; 
+}
+.footer{
+	margin-bottom: 60px;
+	border-bottom:1px solid #C0C0C0;
+}
+div{
+	width: 800px;
+	margin: 30px auto;
+}
+
+img{
+	margin:10px 275px;
+	width: 250px;
+	height: 350px;
+}
+p{
+	margin: 10px 15px ;
+}
+li{
+	margin: 7px -5px;
+}

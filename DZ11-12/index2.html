@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>DZ11_12 Part2</title>
+	<link rel="stylesheet" href="css/style2.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="js/tmpl.js"></script>
+	<script src="js/script2.js"></script>
+</head>
+<body>
+
+	<script type="text/template" id="render">
+	<div class="header">
+	
+		<h1 align="center"><%= title %></h1>
+		<img src="<%= image %>" alt="">
+		<p><%= content %></p>
+	</div>
+	<div>
+		<p> <%= content1 %></p>
+	</div>
+	<div class="list">
+		<ul>
+			<%  for ( var i = 0; i < list.length; i++ ) {  %>
+			<li>
+				<%= list[i].item %>
+			</li>
+			<% };%>
+		</ul>
+	</div>
+	<div>
+		<% for (var i=0; i < contact.length; i++) { %>
+			<p>
+				<%= contact[i].telNumber %>
+			</p>
+		<% }; %>
+	</div>
+	<div>
+		
+			<p><%= contVk %></p>
+			<p><a href="<%= linkVk %>" target="_blank"><%= linkVkTitle %></a></p>
+
+	</div>
+	<div class="footer">
+		<% for (var i=0; i < feedback.length; i++ ) {%>
+
+			<p>
+				<%= feedback[i].myComent %>
+			</p>
+
+		<% }; %>
+	</div>
+
+	</script>
+	
+</body>
+</html>
