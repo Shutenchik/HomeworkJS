@@ -4,8 +4,8 @@ $(function () {
 	var htmlTest = $('#render').html();
 	var test = {
 		title: 'Тест по програмированию',
-		question: [ 'Столица Украины', 'Столица США', 'Столица Германии'],
-		answer: [['Минск', 'Москва', ' Киев'], ['Чикаго', ' Вашингтон', 'Нью-Йорк'], [' Берлин ', 'Мюнхен', 'Кёльн']],
+		question: [ 'Основные инструменты для фронтенд разработки', 'Свойство для изменения размера шрифта', 'Кто являеться создателем JavaScript?'],
+		answer: [['Html, PHP, JavaScript', 'Java, CSS, Html', ' Html, CSS, JavaScript'], ['Font-wieght', ' Font-size', 'Font-family'], [' Брендад Эйх ', 'Ларри Уолл', 'Билл Гейтс']],
 		button: 'Проверить мои результаты'
 		
 	};
@@ -25,6 +25,7 @@ $('body').append(renderPage);
 //	 show modal
 	var modalBox;
 	var $body;
+	var $overlay;
 	var title;
 	var $getAnswer;
 	
@@ -34,8 +35,13 @@ $('body').append(renderPage);
 			for (var i = 0; i < $getAnswer.length; i++) {
 				$getAnswer[i].checked = false;
 			}
+
 		modalBox = $('.modalBox')
-		modalBox.remove();
+		$(modalBox).animate({ top: '-50%' }, 500);
+		setTimeout(function () {
+        modalBox.remove();
+        $overlay.remove();
+      }, 500);
 
 	} 
 
@@ -53,26 +59,28 @@ $('body').append(renderPage);
 			};
 		};
 
-		 // console.log('rightAnswersCounter = ', rightAnswersCounter);
-
 		 if ( rightAnswersCounter === 0) { 	
-				modalBox = $('<div class="modalBox"><h1>Your have ' + rightAnswersCounter + ' right answers<h1><button class="closeModal btn btn-default">close</button></div>');
+		 	modalBox = $('<div class="modalBox"><h1 class="head-Title">Your score is: ' + rightAnswersCounter + ' of 3</h1><button class="closeModal btn btn-success">close</button></div>');
 		 } 
 
 		 if ( rightAnswersCounter === 1 ) {
-				modalBox = $('<div class="modalBox"><h1>Your have ' + rightAnswersCounter +' right answers<h1><button class="closeModal btn btn-default">close</button></div>');		 	
+		 	modalBox = $('<div class="modalBox"><h1 class="head-Title">Your score is: ' + rightAnswersCounter +' of 3</h1><button class="closeModal btn btn-success">close</button></div>');		 	
 		 }
 
 		 	if ( rightAnswersCounter === 2 ) {
-			   modalBox = $('<div class="modalBox"><h1>Your have ' + rightAnswersCounter +' right answers<h1><button class="closeModal btn btn-default">close</button></div>');		 	
+		 		modalBox = $('<div class="modalBox"><h1 class="head-Title">Your score is:  ' + rightAnswersCounter +' of 3</h1><button class="closeModal btn btn-success">close</button></div>');		 	
 		 }
 
 		 	if ( rightAnswersCounter === 3 ) {
-			 	  modalBox = $('<div class="modalBox"><h1> Congrats! Your have ' + rightAnswersCounter +' right answers<h1><button class="closeModal btn btn-default">close</button></div>');		 	
+		 		modalBox = $('<div class="modalBox"><h1 class="head-Title"> Congrats! </h1><p class="test-done">Your score is: ' + rightAnswersCounter +' of 3</p> <button class="closeModal btn btn-success btn-test-done">close</button></div>');		 	
 		  }
-
+	
+		$overlay = $('<div class="modal-overlay">');
 	 	$body = $('body');
+	 	$body.append($overlay);
 		$body.append(modalBox).show();
+		$(modalBox).animate({top: '25%'}, 500);
+
 
   	$('.closeModal').one('click', hideModal);
 	};
