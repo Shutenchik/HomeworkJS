@@ -5,11 +5,18 @@ $(function () {
 var $input = $('.searchInput');
 var $button = $('.searchButton');
 var $content = $('.content');
-
-function generateImg() {
+var image;
+var page;
+function searchRequest() {
 
 	$('.pixabay-box').remove();
 
+	function appendResult() {
+			$content.append('<div class="pixabay-box"><a href="'+ page + '" target="_blank"><img src="'+ image +'"></a></div>');
+	};
+	function notFoundResult() {
+			$content.append('<div class="pixabay-box"><p>Image not found</p></div>');
+	}
 		
 	$.ajax({
 		url: 'https://pixabay.com/api/?key=3044055-26f05a0ce42eac2412c64079c&q=' + encodeURIComponent($input.val()),
@@ -17,15 +24,19 @@ function generateImg() {
 
 		success:	function (data) {
 
+			if ( $input.val() === '') {
+				 return false;
+				} else 
+
 			if ( parseInt(data.totalHits) > 0 ) 
 				$.each( data.hits, function(URL, hit) {
-					var image = hit.previewURL;
-					var page = hit.pageURL;
-					$content.append('<div class="pixabay-box"><a href="'+ page + '"><img src="'+ image +'"></a></div>');
+				 image = hit.previewURL;
+				 page = hit.pageURL;
+					appendResult();
 				});
 			
 			else {
-				$content.append('<div class="pixabay-box"><p>Image not found</p></div>');
+				notFoundResult();
 				}
 		}
 	});
@@ -33,11 +44,11 @@ function generateImg() {
 
 	$input.keydown(function(event) {
 		if ( event.keyCode == 13) {
-			generateImg();
+			searchRequest();
 		}
 	});
 
-$button.on('click', generateImg ); 
+$button.on('click', searchRequest ); 
 
 
 	// second part

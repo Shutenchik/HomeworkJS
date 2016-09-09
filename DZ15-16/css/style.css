@@ -1,6 +1,17 @@
+* {
+	margin: 0;	
+	padding: 0;	
+}
+body {
+
+}
+
 .wrapper {
-	width: 100%;
-	height: 200px;
+	height: auto;
+	margin: 0 auto;
+	position: relative;
+	top: 70px;
+	width: 62%;;
 
 }
 
@@ -9,13 +20,13 @@
 }
 
 .wrapper img {
-	width: 130px;
-	height: 50px;
+	width: 150px;
+	height: 60px;
 
 }
 
 .searchInput {
-	width: 40%;
+	width: 60%;
 	height: 20px;
 	position: relative;
 	top: -20px;
@@ -39,17 +50,17 @@
 }
 .content {
   border-radius: 5px;
-  border: 1px solid #4285f4;
-  width: 700px;
   background: rgb(244, 246, 246);
+  margin: 0 auto;
+  width: 90%;
 }
 
 .content img {
-	width: 140px;
-	height: 180px;
+	width: 155px;
+	height: 126px;
 	margin: 15px;
-	border: 2px solid #345ea2;
-	border-radius: 9px;
+	border-radius: 5px;
+	border: 1px solid #8b9ebb;
 
 }
 
